@@ -1,8 +1,8 @@
-// Require dotenv to access environment varibles.
-require('dotenv').config();
-
 // Require the discord.js module
 const Discord = require('discord.js');
+
+// Retrieve any config variables necessary.
+const { prefix, token } = require('./config.json');
 
 // Create a new Discord client
 const client = new Discord.Client();
@@ -14,11 +14,19 @@ client.once('ready', () => {
 });
 
 client.on('message', message => {
-	if (message.content === '!ping') {
-		// send back "Pong." to the channel the message was sent in
+	if (message.content === `${prefix}ping`) {
 		message.channel.send('Pong.');
+	}
+	else if (message.content === `${prefix}beep`) {
+		message.channel.send('Boop.');
+	}
+	else if (message.content === `${prefix}server`) {
+		message.channel.send(`Server name: ${message.guild.name}\nTotal members: ${message.guild.memberCount}`);
+	}
+	else if (message.content === `${prefix}user-info`) {
+		message.channel.send(`Your username: ${message.author.username}\nYour ID: ${message.author.id}`);
 	}
 });
 
 // Login to Discord with your app's token
-client.login(process.env.TOKEN);
+client.login(token);
