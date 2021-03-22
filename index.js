@@ -7,6 +7,7 @@ const fs = require('fs');
 
 const eventFiles = fs.readdirSync('./events').filter(file => file.endsWith('.js'));
 
+// Register all of the bot's available events.
 for (const file of eventFiles) {
 	const event = require(`./events/${file}`);
 	if (event.once) {
@@ -22,6 +23,7 @@ client.commands = new Discord.Collection();
 
 const commandFolders = fs.readdirSync('./commands');
 
+// Register all of the bot's available commands.
 for (const folder of commandFolders) {
 	const commandFiles = fs.readdirSync(`./commands/${folder}`).filter(file => file.endsWith('.js'));
 
