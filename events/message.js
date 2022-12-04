@@ -24,12 +24,12 @@ module.exports = {
 		if (command.permissions) {
 			const authorPerms = message.channel.permissionsFor(message.author);
 			if (!authorPerms || !authorPerms.has(command.permissions)) {
-				return message.reply('You can not do this!');
+				return message.reply(message.author + ', you aren\'t authorized to do this!');
 			}
 		}
 
 		if (command.args && !args.length) {
-			let reply = `You didn't provide any arguments, ${message.author}!`;
+			let reply = message.author + ', you didn\'t provide any arguments, ${message.author}!';
 
 			if (command.usage) {
 				reply += `\nThe proper usage would be: \`${prefix}${command.name} ${command.usage}\``;
@@ -65,7 +65,7 @@ module.exports = {
 		}
 		catch (error) {
 			console.error(error);
-			message.reply('there was an error trying to execute that command!');
+			message.reply('There was an error trying to execute ' + command.name);
 		}
 	},
 };
