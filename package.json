@@ -4,9 +4,9 @@
   "description": "A Discord bot for adding polling.",
   "main": "index.js",
   "dependencies": {
-    "discord.js": "^12.5.1",
-    "dotenv": "^8.2.0",
-    "eslint": "^7.22.0"
+    "discord.js": "^12.5.3",
+    "dotenv": "^8.6.0",
+    "eslint": "^7.32.0"
   },
   "devDependencies": {},
   "scripts": {
